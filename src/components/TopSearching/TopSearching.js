@@ -28,8 +28,10 @@ function createData(name, count) {
   return { name, count }
 }
 
-const TopSearching = () => {
-  const { state: topSearching, isLoading } = useApi('/charts/top')
+const TopSearching = ({ isGlobal }) => {
+  const { state: topSearching, isLoading } = useApi(
+    `/charts/${isGlobal ? 'global-' : ''}top`,
+  )
   const classes = useStyles()
 
   const rows = topSearching.map(searchEntry =>

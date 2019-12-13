@@ -25,6 +25,7 @@ const useStyles = makeStyles(theme => ({
   topBarLink: {
     color: 'inherit',
     textDecoration: 'none',
+    marginLeft: '20px',
   },
 }))
 
