@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment'
-
-import imageFormatter from './imageFormatter'
+import { navigate } from '@reach/router'
+import { imageFormatter } from '../../../shared/utils'
 
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
@@ -29,12 +29,17 @@ const CardResult = ({
   artistName,
   trackTimeMillis,
   artworkUrl100,
+  trackId,
+  collectionId,
 }) => {
   const classes = useStyles()
 
   return (
     <Card className={classes.card}>
-      <CardActionArea className={classes.cardActionArea}>
+      <CardActionArea
+        className={classes.cardActionArea}
+        onClick={() => navigate(`/track/${trackId || collectionId}`)}
+      >
         <CardMedia
           component="img"
           alt={trackName}
