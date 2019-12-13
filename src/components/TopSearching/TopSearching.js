@@ -33,7 +33,7 @@ const TopSearching = () => {
   const classes = useStyles()
 
   const rows = topSearching.map(searchEntry =>
-    createData(searchEntry._id, searchEntry.count),
+    createData(searchEntry.searchTerm, searchEntry.count),
   )
 
   return (
