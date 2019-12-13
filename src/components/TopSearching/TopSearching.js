@@ -20,6 +20,7 @@ const useStyles = makeStyles({
     width: '50%',
     overflowX: 'auto',
     maxWidth: 450,
+    textTransform: 'capitalize',
   },
 })
 
