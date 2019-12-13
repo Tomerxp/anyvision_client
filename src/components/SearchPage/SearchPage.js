@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import debounce from 'lodash.debounce'
+import React from 'react'
 
 import SearchResults from './SearchResults/SearchResults'
-import axios from '../../shared/axios-instance'
-import { useInput } from '../../shared/useInput'
 
 import SearchIcon from '@material-ui/icons/Search'
 import './SearchPage.scss'
 import { InputBase, makeStyles, fade } from '@material-ui/core'
+import useSearchApi from './useSearchApi'
 
 const useStyles = makeStyles(theme => ({
   search: {
@@ -49,27 +47,8 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const SearchPage = () => {
-  const { value: searchText, bind: bindSearchInput } = useInput('')
-  const [results, setResults] = useState([])
   const classes = useStyles()
-
-  useEffect(() => {
-    const debouncedSearch = debounce(searchText => {
-      axios.get(`/search?term=${encodeURI(searchText)}`).then(response => {
-        console.log(response.data)
-        setResults(response.data)
-      })
-    }, 600)
-
-    if (searchText) {
-      debouncedSearch(searchText)
-    } else {
-      debouncedSearch.cancel()
-      setResults([])
-    }
-
-    return debouncedSearch.cancel
-  }, [searchText])
+  const { bindSearchInput, results } = useSearchApi()
 
   return (
     <div className="search-page">
