@@ -32,7 +32,7 @@ const useSearchApi = () => {
 
     return () => {
       debouncedSearch.cancel()
-      source && source.cancel('Operation canceled by the user.')
+      source.cancel('Operation canceled by the user.')
     }
   }, [searchText])
 
