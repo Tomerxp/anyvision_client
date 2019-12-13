@@ -1,5 +1,5 @@
 import React from 'react'
-import useChartsApi from './useChartsApi'
+import useApi from '../../shared/useApi'
 
 import { makeStyles } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
@@ -27,7 +27,7 @@ function createData(name, count) {
 }
 
 const TopSearching = () => {
-  const topSearching = useChartsApi()
+  const topSearching = useApi('/charts/top')
   const classes = useStyles()
 
   const rows = topSearching.map(searchEntry =>

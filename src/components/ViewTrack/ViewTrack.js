@@ -6,7 +6,7 @@ import {
   extractFileExtension,
   imageFormatter,
 } from '../../shared/utils'
-import useSearchTrackApi from './useSearchTrackApi'
+import useApi from '../../shared/useApi'
 import TrackDetails from './TrackDetails/TrackDetails'
 import NotFound from '../NotFound/NotFound'
 
@@ -19,7 +19,7 @@ const fileExtensionToPlayer = {
 }
 
 const ViewTrack = ({ trackId }) => {
-  const trackData = useSearchTrackApi(trackId)
+  let [trackData] = useApi(`/search/${trackId}`)
 
   if (isObjectEmpty(trackData)) return <NotFound />
 
