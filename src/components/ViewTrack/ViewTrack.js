@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Player as VideoPlayer } from 'video-react'
-import { CancelToken } from 'axios'
-import axios from '../../shared/axios-instance'
 
 import {
   isObjectEmpty,
   extractFileExtension,
   imageFormatter,
 } from '../../shared/utils'
+import useSearchTrackApi from './useSearchTrackApi'
 import TrackDetails from './TrackDetails/TrackDetails'
 import NotFound from '../NotFound/NotFound'
 
@@ -20,20 +19,7 @@ const fileExtensionToPlayer = {
 }
 
 const ViewTrack = ({ trackId }) => {
-  const [trackData, setTrackData] = useState()
-
-  useEffect(() => {
-    const axiosSource = CancelToken.source()
-    axios
-      .get(`/search/${trackId}`, {
-        cancelToken: axiosSource.token,
-      })
-      .then(response => setTrackData(response.data[0]))
-      .catch(() => setTrackData({}))
-    return () => {
-      axiosSource.cancel('Operation canceled by the user.')
-    }
-  }, [trackId])
+  const trackData = useSearchTrackApi(trackId)
 
   if (isObjectEmpty(trackData)) return <NotFound />
 
