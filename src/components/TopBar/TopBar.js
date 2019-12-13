@@ -1,11 +1,12 @@
 import React from 'react'
-import { navigate, Link } from '@reach/router'
+import { navigate } from '@reach/router'
 import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import { LibraryMusic } from '@material-ui/icons'
 import { IconButton } from '@material-ui/core'
+import NavLink from './NavLink'
 import routes from '../routes'
 
 const useStyles = makeStyles(theme => ({
@@ -22,11 +23,6 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     marginLeft: 10,
   },
-  topBarLink: {
-    color: 'inherit',
-    textDecoration: 'none',
-    marginLeft: '20px',
-  },
 }))
 
 const TopBar = () => {
@@ -40,15 +36,15 @@ const TopBar = () => {
           <IconButton onClick={() => navigate(mainPage.path)}>
             <LibraryMusic />
           </IconButton>
-          <Link to={mainPage.path} className={classes.topBarLink}>
+          <NavLink to={mainPage.path}>
             <Typography variant="h6" className={classes.title}>
               {mainPage.title}
             </Typography>
-          </Link>
+          </NavLink>
           {otherRoutes.map((route, index) => (
-            <Link key={index} to={route.path} className={classes.topBarLink}>
+            <NavLink key={index} to={route.path}>
               {route.title}
-            </Link>
+            </NavLink>
           ))}
         </Toolbar>
       </AppBar>
