@@ -4,9 +4,13 @@ import routes from './routes'
 import TopBar from './TopBar/TopBar'
 import NotFound from './NotFound/NotFound'
 
+import { CssBaseline } from '@material-ui/core'
+import './App.scss'
+
 const App = () => {
   return (
-    <div>
+    <div className="app">
+      <CssBaseline />
       <TopBar />
       <Router>
         {routes.map((route, index) => {

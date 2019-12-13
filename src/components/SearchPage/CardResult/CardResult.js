@@ -1,0 +1,56 @@
+import React from 'react'
+import moment from 'moment'
+
+import imageFormatter from './imageFormatter'
+
+import { makeStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardActionArea from '@material-ui/core/CardActionArea'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
+import Typography from '@material-ui/core/Typography'
+
+const useStyles = makeStyles({
+  card: {
+    maxWidth: 345,
+    flex: '1 0 20%',
+    margin: 5,
+  },
+  cardActionArea: {
+    height: '100%',
+    maxHeight: '250px',
+  },
+})
+
+const CardResult = ({
+  trackName,
+  artistName,
+  trackTimeMillis,
+  artworkUrl100,
+}) => {
+  const classes = useStyles()
+
+  return (
+    <Card className={classes.card}>
+      <CardActionArea className={classes.cardActionArea}>
+        <CardMedia
+          component="img"
+          alt={trackName}
+          height="140"
+          image={imageFormatter(artworkUrl100)}
+          title={trackName}
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            {artistName} - {trackName}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {trackTimeMillis && moment.utc(trackTimeMillis).format('HH:mm:ss')}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  )
+}
+
+export default CardResult
