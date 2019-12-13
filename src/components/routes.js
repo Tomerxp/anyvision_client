@@ -1,4 +1,5 @@
 import SearchPage from './SearchPage/SearchPage'
+import TopSearching from './TopSearching/TopSearching'
 
 const routes = [
   {
@@ -8,7 +9,7 @@ const routes = [
   },
   {
     title: 'Top 10 Searches',
-    Component: SearchPage,
+    Component: TopSearching,
     path: '/top10',
   },
 ]
