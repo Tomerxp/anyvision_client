@@ -10,17 +10,17 @@ const useSearchApi = () => {
   const [results, setResults] = useState([])
 
   useEffect(() => {
-    const source = CancelToken.source()
+    const axiosSource = CancelToken.source()
 
     const debouncedSearch = debounce(searchText => {
       axios
         .get(`/search?term=${encodeURI(searchText)}`, {
-          cancelToken: source.token,
+          cancelToken: axiosSource.token,
         })
         .then(response => {
           setResults(response.data)
         })
-        .catch(() => {})
+        .catch(() => {}) // After canceling our request we will catch the exception
     }, 600)
 
     if (searchText) {
@@ -32,7 +32,7 @@ const useSearchApi = () => {
 
     return () => {
       debouncedSearch.cancel()
-      source.cancel('Operation canceled by the user.')
+      axiosSource.cancel('Operation canceled by the user.')
     }
   }, [searchText])
 
