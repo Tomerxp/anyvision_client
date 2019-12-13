@@ -2,7 +2,7 @@ import React from 'react'
 import { Player as VideoPlayer } from 'video-react'
 
 import {
-  isObjectEmpty,
+  isEmptyObject,
   extractFileExtension,
   imageFormatter,
 } from '../../shared/utils'
@@ -10,6 +10,7 @@ import useApi from '../../shared/useApi'
 import TrackDetails from './TrackDetails/TrackDetails'
 import NotFound from '../NotFound/NotFound'
 
+import { CircularProgress } from '@material-ui/core'
 import './ViewTrack.scss'
 import 'video-react/dist/video-react.css'
 
@@ -19,11 +20,11 @@ const fileExtensionToPlayer = {
 }
 
 const ViewTrack = ({ trackId }) => {
-  let [trackData] = useApi(`/search/${trackId}`)
+  const { state: trackData, isLoading } = useApi(`/search/${trackId}`, {})
 
-  if (isObjectEmpty(trackData)) return <NotFound />
+  if (isLoading) return <CircularProgress />
 
-  if (!trackData) return <div>Loading...</div>
+  if (isEmptyObject(trackData)) return <NotFound />
 
   const Media =
     fileExtensionToPlayer[extractFileExtension(trackData.previewUrl)]
