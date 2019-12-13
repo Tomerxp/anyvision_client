@@ -12,6 +12,9 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
+  appBar: {
+    backgroundColor: '#213398',
+  },
   menuButton: {
     marginRight: theme.spacing(2),
   },
@@ -31,7 +34,7 @@ const TopBar = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" classes={{ colorPrimary: classes.appBar }}>
         <Toolbar>
           <IconButton onClick={() => navigate(mainPage.path)}>
             <LibraryMusic />

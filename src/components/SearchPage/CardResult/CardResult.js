@@ -12,9 +12,11 @@ import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles({
   card: {
-    maxWidth: 345,
+    maxWidth: 450,
+    minWidth: 300,
     flex: '1 0 20%',
-    margin: 5,
+    boxSizing: 'border-box',
+    margin: 10,
   },
   cardActionArea: {
     height: '100%',
@@ -45,7 +47,7 @@ const CardResult = ({
             {artistName} - {trackName}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {trackTimeMillis && moment.utc(trackTimeMillis).format('HH:mm:ss')}
+            {trackTimeMillis && moment.utc(trackTimeMillis).format('mm:ss')}
           </Typography>
         </CardContent>
       </CardActionArea>
