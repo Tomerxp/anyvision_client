@@ -6,7 +6,8 @@ if (!localStorage.getItem('token')) {
 }
 
 const instance = axios.create({
-  baseURL: 'http://localhost:8080/v1',
+  baseURL:
+    'https://itunes-searcher-server.netlify.com/.netlify/functions/index',
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
