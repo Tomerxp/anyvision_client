@@ -19,10 +19,6 @@ const useStyles = makeStyles(theme => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
-  title: {
-    flexGrow: 1,
-    marginLeft: 10,
-  },
 }))
 
 const TopBar = () => {
@@ -36,7 +32,7 @@ const TopBar = () => {
           <IconButton onClick={() => navigate(mainPage.path)}>
             <LibraryMusic />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h6">
             <NavLink to={mainPage.path}>{mainPage.title}</NavLink>
           </Typography>
           {otherRoutes.map((route, index) => (
