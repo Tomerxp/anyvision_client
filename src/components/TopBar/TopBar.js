@@ -36,11 +36,9 @@ const TopBar = () => {
           <IconButton onClick={() => navigate(mainPage.path)}>
             <LibraryMusic />
           </IconButton>
-          <NavLink to={mainPage.path}>
-            <Typography variant="h6" className={classes.title}>
-              {mainPage.title}
-            </Typography>
-          </NavLink>
+          <Typography variant="h6" className={classes.title}>
+            <NavLink to={mainPage.path}>{mainPage.title}</NavLink>
+          </Typography>
           {otherRoutes.map((route, index) => (
             <NavLink key={index} to={route.path}>
               {route.title}
