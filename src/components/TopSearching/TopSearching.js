@@ -55,9 +55,11 @@ const TopSearching = ({ isGlobal }) => {
               {rows.map(row => (
                 <TableRow key={row.name}>
                   <TableCell component="th" scope="row">
-                    {row.name}
+                    <label htmlFor={row.name}>{row.name}</label>
                   </TableCell>
-                  <TableCell align="right">{row.count}</TableCell>
+                  <TableCell align="right" id={row.name}>
+                    {row.count}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
