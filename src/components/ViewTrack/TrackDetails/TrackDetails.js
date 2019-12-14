@@ -9,9 +9,8 @@ import formatFields from './FormatFields'
 
 const useStyles = makeStyles({
   paper: {
-    width: 'auto',
+    width: '260px',
     overflowX: 'auto',
-    maxWidth: 450,
     textTransform: 'capitalize',
   },
 })

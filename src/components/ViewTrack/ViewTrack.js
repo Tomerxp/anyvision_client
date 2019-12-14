@@ -37,14 +37,13 @@ const ViewTrack = ({ trackId }) => {
       <div className="media-info">
         <TrackDetails {...trackData} />
         {Media ? (
-          <Media
-            src={trackData.previewUrl}
-            poster={imageFormatter(trackData.artworkUrl100, 500, 900)}
-            autoPlay
-            height={500}
-            width={900}
-            fluid={false}
-          />
+          <div className="media-player-wrapper">
+            <Media
+              src={trackData.previewUrl}
+              poster={imageFormatter(trackData.artworkUrl100, 500, 900)}
+              autoPlay
+            />
+          </div>
         ) : (
           <span>This item does not have any media to play</span>
         )}

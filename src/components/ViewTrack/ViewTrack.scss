@@ -12,5 +12,12 @@
   .media-info {
     display: flex;
     justify-content: space-evenly;
+    width: 55%;
+    flex-wrap: wrap;
+  }
+
+  .media-player-wrapper {
+    width: calc(100% - 260px);
+    min-width: 400px;
   }
 }
